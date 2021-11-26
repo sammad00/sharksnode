@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag frehman/pipe1:v.1.1
+      run: docker build . --tag frehman/pipe1:v.1.1
       
     - name: Logging into the Docker Hub
       with:
