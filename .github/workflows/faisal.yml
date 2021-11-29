@@ -34,4 +34,4 @@ jobs:
             chmod 600 ~/.ssh/deploy.pem
             
     - name: Login to Docker Hub on the Deployment Server        
-      run: ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@52.55.48.5 "sh huby.sh"
+      run: ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@52.55.48.5 "pwd"
