@@ -26,3 +26,9 @@ jobs:
     - name: Pushing the Image to Docker Hub
       run: |
             docker push frehman/pipe1:v.1.1
+    - name: SSH Authentication with the Deployment Server
+      run: |
+            mkdir -p ~/.ssh/
+            echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
+            chmod 600 ~/.ssh/deploy.pem
+            ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@52.55.48.5 "docker pull frehman/pipe1:v.1.1"
