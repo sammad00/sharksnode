@@ -35,5 +35,4 @@ jobs:
             
     - name: Copy the script on the deployment server.  
       run: |
-       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@35.174.8.4
-       scp doscript.sh frehman@35.174.8.4:/home/users/frehman
+       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@35.174.8.4 "scp doscript.sh frehman@35.174.8.4:/home/users/frehman"
