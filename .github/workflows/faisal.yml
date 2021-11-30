@@ -1,9 +1,9 @@
 name: Docker Image CI
 
 on:
-#  push:
-#    branches: [ main ]
-  pull_request:
+ push:
+   branches: [ main ]
+ pull_request:
     branches: [ main ]
 
 jobs:
@@ -33,5 +33,7 @@ jobs:
             echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
             chmod 600 ~/.ssh/deploy.pem
             
-    - name: Login to Docker Hub on the Deployment Server        
-      run: ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@35.174.8.4 "cd /home/users/frehman/ && sh dhub.sh"
+    - name: Copy the script on the deployment server.  
+      run: |
+       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@35.174.8.4
+       scp doscript.sh frehman@35.174.8.4:/home/users/frehman
