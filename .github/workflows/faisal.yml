@@ -34,5 +34,4 @@ jobs:
             chmod 600 ~/.ssh/deploy.pem
             
     - name: Copy the script on the deployment server.  
-      run: |
-       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@35.174.8.4 "scp doscript.sh frehman@35.174.8.4:/home/users/frehman"
+      run: scp doscript.sh frehman@35.174.8.4:/home/users/frehman
