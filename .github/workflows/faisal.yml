@@ -34,4 +34,5 @@ jobs:
             chmod 600 ~/.ssh/deploy.pem
             
     - name: Copy the script on the deployment server.  
-      run: scp doscript.sh frehman@35.174.8.4:/home/users/frehman
+      run: |
+       ssh frehman@35.174.8.4
