@@ -37,5 +37,4 @@ jobs:
       run: |
        ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.242.211.61
        scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh frehman@54.242.211.61:/home/users/frehman
-       chmod +x doscript.sh
-       sh doscript.sh
+       cd /home/users/frehman/tuaadi
