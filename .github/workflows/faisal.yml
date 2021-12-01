@@ -37,4 +37,4 @@ jobs:
       run: |
        ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.242.211.61
        scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh frehman@54.242.211.61:/home/users/frehman
-       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.242.211.61 "sed -i -e 's/DOCKER_USERNAME/'"${{ secrets.DOCKER_USERNAME }}"'/g' /home/users/frehman/.docker/config.json"
+       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.242.211.61 "sed -i -e 's/DOCKER_USERNAME/'faisal'/g' /home/users/frehman/input.txt
