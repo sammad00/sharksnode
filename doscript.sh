@@ -7,4 +7,4 @@ set -x
        
 docker pull frehman/pipe1:v.9.99
 
-docker run -it -d -p 8066:80 --restart unless-stopped --name webserver frehman/pipe1:v.9.99
+docker run -it -d -p 8066:8066 --restart unless-stopped --name webserver frehman/pipe1:v.9.99
