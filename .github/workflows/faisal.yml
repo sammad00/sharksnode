@@ -1,8 +1,8 @@
 name: Docker Image CI
 
 on:
- push:
-   branches: [ main ]
+# push:
+#   branches: [ main ]
  pull_request:
     branches: [ main ]
 
@@ -34,4 +34,7 @@ jobs:
             chmod 600 ~/.ssh/deploy.pem
             
     - name: Copy the script on the deployment server.  
-      run: sh doscript.sh
+      run: |
+       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.91.22.158
+       scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh frehman@54.91.22.158:/home/users/frehman
+       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.91.22.158 "echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin"
