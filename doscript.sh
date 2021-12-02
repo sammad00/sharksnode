@@ -5,7 +5,6 @@ set -x
 
 #First of all, we will add the Docker secrets on the deployment server:
 
-cd /home/users/frehman/tuaadi
+docker pull frehman/pipe1:v.9.99
 
-#sed -i -e 's/DOCKER_USERNAME/'faisal'/g' /home/users/frehman/input.txt
-#sed -i -e 's/DOCKER_PASSWORD/'"${{ secrets.DOCKER_PASSWORD }}"'/g' /home/users/frehman/input.txt
+docker run -it -d -p 8066:80 --restart unless-stopped --name webserver frehman/pipe1:v.9.99
