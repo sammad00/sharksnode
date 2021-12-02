@@ -33,7 +33,7 @@ jobs:
             echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
             chmod 600 ~/.ssh/deploy.pem
             
-    - name: Copy the script on the deployment server.  
+    - name: Login to the Deployment Server and run the Script to Deploy Service.
       run: |
        ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.91.22.158
        scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh frehman@54.91.22.158:/home/users/frehman
