@@ -3,12 +3,8 @@ jobs:
   build:
     docker:
       - image: cimg/node:17.2.0
-      
-    auth:
-       username: frehman
-       password: $DOCKERHUB_PASSWORD
     steps:
       - run:
-          name: Build the Docker Image from the Dockerfile
+          name: Just Pull the Docker Image
           command: |
-            docker build . --tag frehman/pipe1:v.5.55
+            docker pull busybox
