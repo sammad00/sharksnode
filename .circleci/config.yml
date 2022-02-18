@@ -2,10 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ubuntu-latest
+      - image: circleci/node:10
     steps:
       - run:
-          name: Just Pull the Docker Image
+          name: Install dependencies
           command: |
-            sudo service docker status
-            sudo docker images
+            npm install
+           
