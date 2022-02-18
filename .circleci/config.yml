@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:10
         auth:
-          username: frehman
+          username: $DOCKER_USERNAME
           password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
@@ -14,7 +14,7 @@ jobs:
 
       # build and push Docker image
       - run: |
-          TAG=0.1.$CIRCLE_BUILD_NUM
+          TAG=1.$CIRCLE_BUILD_NUM
           docker build -t frehman/pipe1:$TAG .
-          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          echo $DOCKERHUB_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker push frehman/pipe1:$TAG
