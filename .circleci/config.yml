@@ -7,4 +7,6 @@ jobs:
       - run:
           name: Just Pull the Docker Image
           command: |
-            service docker status
+            sudo service docker start
+            sudo service docker status
+            sudo docker images
