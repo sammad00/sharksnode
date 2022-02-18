@@ -8,4 +8,7 @@ jobs:
       - run:
           name: Build the Docker Image
           command: |
+            sudo groupadd docker
+            sudo usermod -aG docker $(whoami)
+            systemctl start docker
             docker build -t myfirstimage .
