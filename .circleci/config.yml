@@ -11,6 +11,9 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
           docker_layer_caching: true
+      - add_ssh_keys:
+          fingerprints:
+            - "3c:ad:da:68:e1:94:ab:75:ec:45:08:c0:2a:b5:59:7b"
 
       # build and push Docker image
       - run: |
@@ -18,3 +21,9 @@ jobs:
           docker build -t frehman/pipe1:$TAG .
           echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
           docker push frehman/pipe1:$TAG
+          
+      # pull and deploy the Docker container
+      - run: |
+          ssh frehman@18.208.231.103
+          docker pull frehman/pipe1:$TAG
+          docker run -it -d -p 8066:8066 --restart unless-stopped --name webserver frehman/pipe1:$TAG
