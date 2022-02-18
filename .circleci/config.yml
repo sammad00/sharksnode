@@ -10,5 +10,5 @@ jobs:
           command: |
             sudo groupadd docker
             sudo usermod -aG docker $(whoami)
-            systemctl start docker
+            sudo service docker restart
             docker build -t myfirstimage .
