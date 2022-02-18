@@ -4,8 +4,8 @@ jobs:
     docker:
       - image: circleci/node:10
     steps:
+      - checkout
       - run:
-          name: Install dependencies
+          name: Build the Docker Image
           command: |
-            npm install
-           
+            docker build -t myfirstimage    
