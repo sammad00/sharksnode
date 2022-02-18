@@ -5,7 +5,7 @@ jobs:
       - image: circleci/node:10
         auth:
           username: $DOCKER_USERNAME
-          password: $DOCKERHUB_PASSWORD
+          password: $DOCKER_PASSWORD
     steps:
       - checkout
       - setup_remote_docker:
@@ -16,5 +16,5 @@ jobs:
       - run: |
           TAG=1.$CIRCLE_BUILD_NUM
           docker build -t frehman/pipe1:$TAG .
-          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}"
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
           docker push frehman/pipe1:$TAG
