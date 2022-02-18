@@ -10,5 +10,4 @@ jobs:
           command: |
             sudo groupadd docker
             sudo usermod -aG docker $(whoami)
-            sudo service docker restart
             docker build -t myfirstimage .
