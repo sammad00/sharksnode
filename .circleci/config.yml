@@ -8,4 +8,4 @@ jobs:
       - run:
           name: Build the Docker Image
           command: |
-            docker build -t myfirstimage    
+            docker build -t myfirstimage .
