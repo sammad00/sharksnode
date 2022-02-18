@@ -2,11 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: docker:17.05.0-ce-git
+      - image: ubuntu-latest
     steps:
       - run:
           name: Just Pull the Docker Image
           command: |
-            sudo service docker start
             sudo service docker status
             sudo docker images
