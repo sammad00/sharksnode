@@ -24,6 +24,6 @@ jobs:
           
       # pull and deploy the Docker container
       - run: |
-          ssh -oStrictHostKeyChecking=no -t frehman@18.208.231.103
+          ssh -oStrictHostKeyChecking=no -t frehman@54.221.184.92
           docker pull frehman/pipe1:$TAG
           docker run -it -d -p 8066:8066 --restart unless-stopped --name webserver frehman/pipe1:$TAG
