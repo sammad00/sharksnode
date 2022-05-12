@@ -42,7 +42,7 @@ jobs:
          username: 'faisal'
          password: ${{secrets.SSH_PASSWORD}}
       run: |
-            sshpass -p "${{env.password}} ssh -o StrictHostKeyChecking=no ${{env.username}}@${{env.host}} "
+            sshpass -p "${{env.password}}" ssh -o StrictHostKeyChecking=no ${{env.username}}@${{env.host}} "
             echo 'current location'
             pwd
           
