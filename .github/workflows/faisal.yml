@@ -28,11 +28,11 @@ jobs:
       run: |
            docker push frehman/pipe1:v.9.22
             
-    - name: SSH Authentication with the Deployment Server
-      run: |
-            mkdir -p ~/.ssh/
-            echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
-            chmod 600 ~/.ssh/deploy.pem
+#     - name: SSH Authentication with the Deployment Server
+#       run: |
+#             mkdir -p ~/.ssh/
+#             echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
+#             chmod 600 ~/.ssh/deploy.pem
     
     - name: Deploy
       uses: appleboy/ssh-action@master
@@ -40,7 +40,10 @@ jobs:
        host: ${{ secrets.HOST }}
        username: ${{ secrets.USER }}
        password: ${{ secrets.PASS }}
-       script: whoami
+       script: |
+        cp doscript.sh /home/faisal
+        chmod +x doscript.sh
+        
        
 #     - name: Login to the Deployment Server and run the Script to Deploy Service.
 #       run: |
