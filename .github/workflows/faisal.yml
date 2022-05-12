@@ -28,23 +28,15 @@ jobs:
       run: |
         echo test
             #    docker push frehman/pipe1:v.9.22
-            #     - name: SSH Authentication with the Deployment Server
-#       run: |
-#             mkdir -p ~/.ssh/
-#             echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
-#             chmod 600 ~/.ssh/deploy.pem
-#             pwd
-#             ls -la
-    
-    - name: Connect with the Deployment Server via SSH
-      env:
-         host: '20.42.118.179'
-         username: 'faisal'
-         password: ${{secrets.SSH_PASSWORD}}
+            
+    - name: SSH Authentication with the Deployment Server
       run: |
-            sshpass -p "${{env.password}}" ssh -o StrictHostKeyChecking=no ${{env.username}}@${{env.host}} "
-            echo 'current location'
+            mkdir -p ~/.ssh/
+            echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
+            chmod 600 ~/.ssh/deploy.pem
             pwd
+            ls -la
+    
           
 #     - name: Login to the Deployment Server and run the Script to Deploy Service.
 #       run: |
