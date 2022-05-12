@@ -41,9 +41,8 @@ jobs:
          host: '20.42.118.179'
          username: 'faisal'
          password: ${{secrets.SSH_PASSWORD}}
-         port: 22
       run: |
-            sshpass -p "${{env.password}}" ssh -o StrictHostKeyChecking=no ${{env.username}}@${{env.host}} -p ${{env.port}} "
+            sshpass -p "${{env.password}} ssh -o StrictHostKeyChecking=no ${{env.username}}@${{env.host}} "
             echo 'current location'
             pwd
           
