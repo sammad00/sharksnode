@@ -41,8 +41,7 @@ jobs:
        username: ${{ secrets.USER }}
        password: ${{ secrets.PASS }}
        script: |
-        cp doscript.sh /home/faisal
-        chmod +x doscript.sh
+        curl ifconfig.me
         
        
 #     - name: Login to the Deployment Server and run the Script to Deploy Service.
