@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
  push:
-   branches: [ main ]
+   branches: [ dd ]
  pull_request:
-    branches: [ main ]
+    branches: [ dd ]
 
 jobs:
 
@@ -28,24 +28,14 @@ jobs:
       run: |
            docker push frehman/pipe1:v.9.22
             
-#     - name: SSH Authentication with the Deployment Server
-#       run: |
-#             mkdir -p ~/.ssh/
-#             echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
-#             chmod 600 ~/.ssh/deploy.pem
+    - name: SSH Authentication with the Deployment Server
+      run: |
+            mkdir -p ~/.ssh/
+            echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
+            chmod 600 ~/.ssh/deploy.pem
     
-    - name: Deploy
-      uses: appleboy/ssh-action@master
-      with:
-       host: ${{ secrets.HOST }}
-       username: ${{ secrets.USER }}
-       password: ${{ secrets.PASS }}
-       script: |
-        curl ifconfig.me
-        
-       
-#     - name: Login to the Deployment Server and run the Script to Deploy Service.
-#       run: |
-#          ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no faisal@20.42.118.179
-#          scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh faisal@20.42.118.179:/home/faisal
+    - name: Login to the Deployment Server and run the Script to Deploy Service.
+      run: |
+          ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no faisal@20.42.118.179
+#         scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh faisal@20.42.118.179:/home/faisal
 #      ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.91.22.158 "echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin  && chmod +x doscript.sh && sh doscript.sh"
