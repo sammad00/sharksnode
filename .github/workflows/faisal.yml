@@ -34,20 +34,9 @@ jobs:
             mkdir -p ~/.ssh/
             echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
             chmod 600 ~/.ssh/deploy.pem
-            pwd
-            ls -la
-          
-    - name: Run a command remotely
-      uses: docker://evaneos/ssh-action:0.1.0
-      with:
-        hosts: 20.42.118.179
-        user: faisal
-        private_key: ${{ secrets.SSH_KEY }}
-        commands: echo "Hello world!"
     
-    
-#     - name: Login to the Deployment Server and run the Script to Deploy Service.
-#       run: |
-#        ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@20.42.118.179
-#        scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh frehman@20.42.118.179:/home/frehman
+    - name: Login to the Deployment Server and run the Script to Deploy Service.
+      run: |
+        ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@20.42.118.179
+        scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh frehman@20.42.118.179:/home/frehman
 #      ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.91.22.158 "echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin  && chmod +x doscript.sh && sh doscript.sh"
