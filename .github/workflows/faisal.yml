@@ -27,7 +27,7 @@ jobs:
     - name: Pushing the Image to Docker Hub
       run: |
         echo test
-            docker push frehman/pipe1:v.9.22
+            #    docker push frehman/pipe1:v.9.22
             #     - name: SSH Authentication with the Deployment Server
 #       run: |
 #             mkdir -p ~/.ssh/
