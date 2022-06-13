@@ -21,7 +21,7 @@ jobs:
     
     - name: Getting the secrets
       run: |
-        curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token <TOKEN>" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/SECRET_NAME
+        curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token <TOKEN>" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/DOCKER_USER
 
     
 #     - name: Logging into the Docker Hub
