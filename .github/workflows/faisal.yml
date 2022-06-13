@@ -22,7 +22,7 @@ jobs:
     
     - name: Getting the secrets
       run: |
-        curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token <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>" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/SSH_KEY
+        curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: <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>" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/SSH_KEY
 
     
 #     - name: Logging into the Docker Hub
