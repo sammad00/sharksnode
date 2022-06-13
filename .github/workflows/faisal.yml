@@ -18,16 +18,24 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --tag frehman/pipe1:$IMAGE_VERSION
-      
-    - name: Logging into the Docker Hub
-      uses: docker/login-action@v1
-      with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASS }}
-          
-    - name: Pushing the Image to Docker Hub
+    
+    - name: Getting the secrets
       run: |
-           docker push frehman/pipe1:$IMAGE_VERSION
+            curl \
+             -H "Accept: application/vnd.github.v3+json" \ 
+             -H "Authorization: token <TOKEN>" \
+              https://api.github.com/repos/OWNER/REPO/actions/secrets/SECRET_NAME
+
+    
+#     - name: Logging into the Docker Hub
+#       uses: docker/login-action@v1
+#       with:
+#           username: ${{ secrets.DOCKER_USER }}
+#           password: ${{ secrets.DOCKER_PASS }}
+          
+#     - name: Pushing the Image to Docker Hub
+#       run: |
+#            docker push frehman/pipe1:$IMAGE_VERSION
             
 #     - name: SSH Authentication with the Deployment Server
 #       run: |
