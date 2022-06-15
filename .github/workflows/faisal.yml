@@ -20,12 +20,9 @@ jobs:
         echo "hi"
      #   docker build . --tag frehman/pipe1:$IMAGE_VERSION
     
-    - name: Getting the secrets
+    - name: Getting my user information
       run: |
-        curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: <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>" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/DOCKER_USER
-        curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: <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>" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/DOCKER_PASS
-        curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: <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>" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/HOST
-
+            curl https://api.github.com/users/faisikhan
 
     
 #     - name: Logging into the Docker Hub
