@@ -23,7 +23,7 @@ jobs:
     - name: Getting my user information
       run: |
             curl -u username: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 https://api.github.com/user
-            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: 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" https://api.github.com/repos/OWNER/repo/actions/secrets/actions
+            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: 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" https://api.github.com/repos/OWNER/repo/actions/secrets/actions/DOCKER_USER
 
 
 #           curl https://api.github.com/users/faisikhan
