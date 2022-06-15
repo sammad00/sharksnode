@@ -22,7 +22,7 @@ jobs:
     
     - name: Getting my user information
       run: |
-         curl -v -H "Authorization: token TOKEN" https://api.github.com/user/issues
+             curl -H "Authorization: token TOKEN" https://api.github.com/user/repos
  #           curl https://api.github.com/users/faisikhan
  #           curl https://api.github.com/faisikhan/followers
  
