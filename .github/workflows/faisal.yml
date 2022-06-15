@@ -22,10 +22,10 @@ jobs:
     
     - name: Getting my user information
       run: |
-            curl https://api.github.com/users/faisikhan
-            curl https://api.github.com/faisikhan/followers
-            curl -H "Authorization: token ${token}" -d '{"name":"Github API Testing"}' https://api.github.com/user/repos
-
+        curl -H "Authorization: token ${token}" -d '{"name":"Github API Testing"}' https://api.github.com/faisikhan/repos
+ #           curl https://api.github.com/users/faisikhan
+ #           curl https://api.github.com/faisikhan/followers
+ 
     
 #     - name: Logging into the Docker Hub
 #       uses: docker/login-action@v1
