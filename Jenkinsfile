@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git([url: 'https://github.com/faisikhan/sharksnode.git', branch: 'master', credentialsId: 'hub'])
+        git([url: 'https://github.com/faisikhan/sharksnode.git', branch: 'main', credentialsId: 'hub'])
 
       }
     }
