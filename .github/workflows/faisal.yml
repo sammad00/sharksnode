@@ -22,7 +22,8 @@ jobs:
     
     - name: Getting my user information
       run: |
-             curl -H "Authorization: token ${token}" -d '{"name":"Github API"}' https://api.github.com/user/repos
+             curl -u faisikhan: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 https://api.github.com/user
+ #             curl -H "Authorization: token ${token}" -d '{"name":"Github API"}' https://api.github.com/user/repos
  #           curl https://api.github.com/users/faisikhan
  #           curl https://api.github.com/faisikhan/followers
  
