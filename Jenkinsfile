@@ -4,12 +4,6 @@ pipeline {
     registryCredential = 'hub'
   }
 agent any
-  stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/faisikhan/sharksnode.git'
-      }
-    }
     stage('Building image') {
       steps{
         script {
