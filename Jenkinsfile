@@ -7,7 +7,7 @@ agent any
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/faisikhan/sharksnode.git'
+        git 'git@github.com:faisikhan/sharksnode.git'
       }
     }
     stage('Building image') {
