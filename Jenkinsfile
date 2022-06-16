@@ -3,3 +3,4 @@ pipeline {
     registry = "frehman/pipe1"
     registryCredential = ‘hub’
   }
+}
