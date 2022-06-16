@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "frehman/pipe1"
-    registryCredential = ‘hub’
+    registryCredential = 'hub'
   }
 agent any
   stages {
