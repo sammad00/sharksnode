@@ -40,7 +40,7 @@ pipeline {
     
      stage('Deploy Image') {
       steps{
-        sh "docker run -it -d -p 8066:8066 --restart unless-stopped --name jenkinsweb $imagename:$BUILD_NUMBER"
+        sh "docker run -p 8066:8066 --name jenkinsweb $imagename:$BUILD_NUMBER"
         }
       }
     stage('Remove Unused docker image') {
