@@ -28,26 +28,16 @@ pipeline {
         }
       }
     }
-    stage('Pull Image') {
+    stage('Deploy Image') {
       steps{
-        script {
-          docker.withRegistry( '', registryCredential ) {
-            dockerImage.pull("$BUILD_NUMBER")
-             }
-        }
+         sh "docker run $imagename:$BUILD_NUMBER"
+         }
       }
-    }
     
-//     stage('Deploy Image') {
-//       steps{
-//          sh "docker run $imagename:$BUILD_NUMBER"
-//          }
-//       }
-    
-//     stage('Remove Unused docker image') {
-//       steps{
-//         sh "docker rmi $imagename:$BUILD_NUMBER"
-//         } 
-//       }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $imagename:$BUILD_NUMBER"
+        } 
+      }
     }
   }
