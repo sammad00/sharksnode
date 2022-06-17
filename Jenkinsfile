@@ -6,27 +6,41 @@ pipeline {
   }
   agent any
   stages {
-    stage('Cloning Git') {
+    stage('Clone Git') {
       steps {
         git([url: 'git@github.com:faisikhan/sharksnode.git', credentialsId: 'githubcreds', branch: 'main'])
 
       }
     }
-    stage('Building image') {
+    stage('Build Image') {
       steps{
         script {
           dockerImage = docker.build imagename
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Push Image') {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
             dockerImage.push("$BUILD_NUMBER")
-             dockerImage.push('latest')
-
-          }
+             }
+        }
+      }
+    }
+    stage('Pull Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.pull("$BUILD_NUMBER")
+             }
+        }
+      }
+    }
+    
+     stage('Deploy Image') {
+      steps{
+        sh "docker run -it -d -p 8066:8066 --restart unless-stopped --name jenkinsweb $imagename:$BUILD_NUMBER"
         }
       }
     }
