@@ -1,15 +1,41 @@
 pipeline {
-    environment {
+  environment {
     imagename = "frehman/pipe1"
     registryCredential = 'hub'
     dockerImage = ''
-  } 
-    agent { dockerfile true }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'docker build . -t frehman/pipe1'
-                }
-        }
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git([url: 'https://github.com/faisikhan/sharksnode.git', branch: 'main' '])
+
+      }
     }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build imagename
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push("$BUILD_NUMBER")
+             dockerImage.push('latest')
+
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $imagename:$BUILD_NUMBER"
+         sh "docker rmi $imagename:latest"
+
+      }
+    }
+  }
 }
