@@ -1,14 +1,12 @@
 pipeline {
-  environment {
-    registry = "frehman/pipe1"
-    registryCredential = 'hub'
-  }
-agent any
-    stage('Building image') {
-      steps{
-        script {
-          docker.build registry + ":$BUILD_NUMBER"
-        }
-      }
+    agent {
+        docker { image 'node:16.13.1-alpine' }
     }
-  }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
+}
