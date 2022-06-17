@@ -30,7 +30,7 @@ pipeline {
     }
     stage('Deploy Image') {
       steps{
-         sh "docker run -d -p 8066:8066 $imagename:$BUILD_NUMBER"
+         sh "docker run -d -p 8066:8066 --name jenkinsweb $imagename:$BUILD_NUMBER"
          }
       }
     
