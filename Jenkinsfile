@@ -1,15 +1,20 @@
 pipeline {
-    agent any
+    agent none
     stages {
-        stage('Build') {
+        stage('Back-end') {
             agent {
-                docker {
-                    image 'gradle:6.7-jdk11'
-                    reuseNode true
-                }
+                docker { image 'maven:3.8.1-adoptopenjdk-11' }
             }
             steps {
-                sh 'gradle --version'
+                sh 'mvn --version'
+            }
+        }
+        stage('Front-end') {
+            agent {
+                docker { image 'node:16.13.1-alpine' }
+            }
+            steps {
+                sh 'node --version'
             }
         }
     }
