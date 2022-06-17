@@ -1,9 +1,14 @@
 pipeline {
+    environment {
+    imagename = "frehman/pipe1"
+    registryCredential = 'hub'
+    dockerImage = ''
+  } 
     agent { dockerfile true }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'docker build . -t frehman/pipe1'
                 }
         }
     }
