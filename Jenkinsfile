@@ -43,13 +43,11 @@ pipeline {
         sh "docker run -it -d -p 8066:8066 --restart unless-stopped --name jenkinsweb $imagename:$BUILD_NUMBER"
         }
       }
-    }
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $imagename:$BUILD_NUMBER"
          sh "docker rmi $imagename:latest"
-
+        } 
       }
     }
   }
-}
