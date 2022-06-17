@@ -38,11 +38,12 @@ pipeline {
       }
     }
     
-     stage('Deploy Image') {
+    stage('Deploy Image') {
       steps{
-        sh "docker run -p 8066:8066 --name jenkinsweb $imagename:$BUILD_NUMBER"
-        }
+         sh "docker run $imagename:$BUILD_NUMBER"
+         }
       }
+    
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $imagename:$BUILD_NUMBER"
