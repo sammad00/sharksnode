@@ -2,3 +2,5 @@ I am just testing git pull origin main command
 
 
 again testing git pull command
+
+testing git fetch
