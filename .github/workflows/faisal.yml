@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
  push:
-   branches: [ main ]
+   branches: [ mainnn ]
    
 env:
   IMAGE_VERSION: release-1.0
@@ -19,20 +19,7 @@ jobs:
       run: |
         echo "hi"
      #   docker build . --tag frehman/pipe1:$IMAGE_VERSION
-    
-    - name: Getting my user information
-      run: |
-            curl -u username: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 https://api.github.com/user
-            curl -u username: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 https://api.github.com/users/faisikhan/orgs   
-            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token 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" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/DOCKER_USER
-            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token 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" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/USER
-            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token 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" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/PASS
-            curl -H "Accept: application/vnd.github.v3+json" -H "Authorization: token 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" https://api.github.com/repos/faisikhan/sharksnode/actions/secrets/HOST
-            
-#           curl https://api.github.com/users/faisikhan
-#           curl https://api.github.com/faisikhan/followers
- 
-    
+  
 #     - name: Logging into the Docker Hub
 #       uses: docker/login-action@v1
 #       with:
