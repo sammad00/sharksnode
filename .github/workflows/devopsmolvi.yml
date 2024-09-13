@@ -2,7 +2,7 @@ name: Containerized Node App Deployment
 
 on:
  push:
-   branches: [ main ]   
+   branches: [ mainnnn ]   
 env:
   IMAGE_VERSION: release-1.0
     
@@ -30,17 +30,4 @@ jobs:
     - name: SSH Authentication with the Deployment Server
       run: |
         ssh -i -oStrictHostKeyChecking=no 34.173.47.176
-        "echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin  && chmod +x doscript.sh && sh doscript.sh"
-            
- #   - name: SSH Authentication with the Deployment Server
- #     run: |
- #           mkdir -p ~/.ssh/
- #           echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
- #           chmod 600 ~/.ssh/deploy.pem
-    
-#    - name: Login to the Deployment Server and run the Script to Deploy Service.
-#      run: |
- #        ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no devopsmolvi@35.190.173.53
-  #       touch abc.txt
-  #       scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh faisal@20.42.118.179:/home/faisal
-  #       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.91.22.158 "echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin  && chmod +x doscript.sh && sh doscript.sh"
+        "echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin  && chmod +x deploy.sh && sh deploy.sh"
