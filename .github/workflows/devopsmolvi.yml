@@ -26,16 +26,21 @@ jobs:
     - name: Pushing the Image to Docker Hub
       run: |
            docker push devopsmolvi/webimages:$IMAGE_VERSION
-            
+
     - name: SSH Authentication with the Deployment Server
       run: |
-            mkdir -p ~/.ssh/
-            echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
-            chmod 600 ~/.ssh/deploy.pem
+        ssh -i -oStrictHostKeyChecking=no 34.173.47.176
+
+            
+ #   - name: SSH Authentication with the Deployment Server
+ #     run: |
+ #           mkdir -p ~/.ssh/
+ #           echo "${{secrets.SSH_KEY}}" > ~/.ssh/deploy.pem
+ #           chmod 600 ~/.ssh/deploy.pem
     
-    - name: Login to the Deployment Server and run the Script to Deploy Service.
-      run: |
-         ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no devopsmolvi@35.190.173.53
-         touch abc.txt
+#    - name: Login to the Deployment Server and run the Script to Deploy Service.
+#      run: |
+ #        ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no devopsmolvi@35.190.173.53
+  #       touch abc.txt
   #       scp -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no doscript.sh faisal@20.42.118.179:/home/faisal
   #       ssh -i ~/.ssh/deploy.pem -oStrictHostKeyChecking=no frehman@54.91.22.158 "echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin  && chmod +x doscript.sh && sh doscript.sh"
