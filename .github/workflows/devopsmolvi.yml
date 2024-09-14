@@ -29,4 +29,7 @@ jobs:
 
     - name: SSH Authentication with the Deployment Server
       run: |
-           ssh -i -oStrictHostKeyChecking=no 35.224.255.103 | echo "${{ secrets.DOCKER_PASS }}" | docker login --username "${{ secrets.DOCKER_USER }}" --password-stdin | docker pull devopsmolvi/webimages:$IMAGE_VERSION | docker run -it -d -p 8080:8080 --restart unless-stopped --name webserver devopsmolvi/webimages:$IMAGE_VERSION
+           ssh -itt -oStrictHostKeyChecking=no 35.224.255.103 
+           echo "${{ secrets.DOCKER_PASS }}" | docker login --username "${{ secrets.DOCKER_USER }}" --password-stdin 
+           docker pull devopsmolvi/webimages:$IMAGE_VERSION
+           docker run -it -d -p 8080:8080 --restart unless-stopped --name webserver devopsmolvi/webimages:$IMAGE_VERSION
