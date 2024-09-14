@@ -29,7 +29,10 @@ jobs:
 
     - name: SSH Authentication with the Deployment Server
       run: |
-        ssh -i -oStrictHostKeyChecking=no 34.162.217.66
-        "echo "${{ secrets.DOCKER_PASS }}" | docker login --username "${{ secrets.DOCKER_USER }}" --password-stdin"  
-         chmod +x deploy.sh
-         sh deploy.sh
+      env:
+         DOCKER_USERNAME: ${{ secrets.DOCKER_USER }}
+         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASS }}
+           ssh -i -oStrictHostKeyChecking=no 35.224.255.103
+           "echo "${{ secrets.DOCKER_PASS }}" | docker login --username "${{ secrets.DOCKER_USER }}" --password-stdin"  
+            chmod +x deploy.sh
+            sh deploy.sh
