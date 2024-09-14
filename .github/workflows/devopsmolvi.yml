@@ -2,7 +2,7 @@ name: Containerized Node App Deployment
 
 on:
  push:
-   branches: [ main ]   
+   branches: [ dummy ]   
 env:
   IMAGE_VERSION: ${{github.run_number}}
     
@@ -31,5 +31,5 @@ jobs:
       run: |
            ssh -i -oStrictHostKeyChecking=no 35.224.255.103
            echo "${{ secrets.DOCKER_PASS }}" | docker login --username "${{ secrets.DOCKER_USER }}" --password-stdin  
-           chmod +x deploy.sh
-           sh deploy.sh
+           docker pull devopsmolvi/webimages:${{github.run_number}}
+           docker run -it -d -p 8080:8080 --restart unless-stopped --name webserver devopsmolvi/webimages:${{github.run_number}}
