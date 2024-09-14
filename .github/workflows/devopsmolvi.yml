@@ -4,7 +4,7 @@ on:
  push:
    branches: [ main ]   
 env:
-  IMAGE_VERSION: $BUILD
+  IMAGE_VERSION: ${{github.run_number}}
     
 jobs:
   build:
