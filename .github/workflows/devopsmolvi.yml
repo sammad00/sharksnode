@@ -4,7 +4,7 @@ on:
  push:
    branches: [ main ]   
 env:
-  IMAGE_VERSION: $(date +%s)
+  IMAGE_VERSION: $(date)
     
 jobs:
   build:
