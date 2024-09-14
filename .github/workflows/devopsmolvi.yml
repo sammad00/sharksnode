@@ -2,7 +2,7 @@ name: Containerized Node App Deployment
 
 on:
  push:
-   branches: [ mainnnn ]   
+   branches: [ main ]   
 env:
   IMAGE_VERSION: ${{github.run_number}}
     
