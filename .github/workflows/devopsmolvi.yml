@@ -8,7 +8,7 @@ env:
     
 jobs:
   build:
-    runs-on: devopsmolvi
+    runs-on: sammad
 
     steps:
     - uses: actions/checkout@v4
